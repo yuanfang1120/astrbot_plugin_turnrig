@@ -1,10 +1,14 @@
-name: 活跃度更新
+name: 更新每日占卜
 
 on:
   schedule:
-    # 每小时运行一次
+    # 每天 00:00 UTC 运行一次（北京时间 08:00）
     - cron: '0 0 * * *'
   workflow_dispatch: # 允许手动触发
+
+# 需要写权限，才能把更新后的 README 提交回仓库
+permissions:
+  contents: write
 
 jobs:
   update-fortune:
