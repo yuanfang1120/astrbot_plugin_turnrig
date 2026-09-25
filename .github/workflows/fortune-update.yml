@@ -1,0 +1,58 @@
+name: 活跃度更新
+
+on:
+  schedule:
+    # 每小时运行一次
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  update-fortune:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Run fortune teller script
+      run: |
+        cd scripts
+        python update_readme_fortune.py
+        
+    - name: Check for changes
+      id: check_changes
+      run: |
+        if git diff --quiet; then
+          echo "changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "changes=true" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: Commit and push if changes
+      if: steps.check_changes.outputs.changes == 'true'
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add README.md
+        git commit -m "🔮 更新每日占卜 - $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M CST')"
+        
+        # 尝试直接推送，如果失败则提示需要配置PAT
+        if ! git push; then
+          echo "❌ 推送失败！可能是因为分支保护设置。"
+          echo "💡 解决方案："
+          echo "1. 创建一个Personal Access Token (PAT)"
+          echo "2. 在仓库设置中添加名为 PAT_TOKEN 的secret"
+          echo "3. 或者在分支保护规则中允许GitHub Actions绕过保护"
+          exit 1
+        fi
+        
+    - name: No changes message
+      if: steps.check_changes.outputs.changes == 'false'
+      run: echo "占卜内容未发生变化，无需更新喵～" 

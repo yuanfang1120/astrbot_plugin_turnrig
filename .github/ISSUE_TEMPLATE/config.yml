@@ -1,0 +1,13 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 查看文档
+    url: https://github.com/yuanfang1120/astrbot_plugin_turnrig/blob/main/README.md
+    about: 查看插件的安装、配置与使用说明
+
+  - name: 🔧 故障排除
+    url: https://github.com/yuanfang1120/astrbot_plugin_turnrig/blob/main/docs/user-guide/troubleshooting.md
+    about: 消息没有转发、目标收不到内容等问题先看这里
+
+  - name: 🚀 AstrBot 官方
+    url: https://github.com/AstrBotDevs/AstrBot
+    about: 访问 AstrBot 主项目，了解框架相关信息

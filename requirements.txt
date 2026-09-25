@@ -1,0 +1,5 @@
+# 插件直接 import 的第三方依赖（其余只用 AstrBot 本体与 Python 标准库）
+# requests: 下载图片 / 视频 / 语音等媒体文件
+# Pillow:   把 GIF 转为静态图后重试发送
+requests>=2.28
+Pillow>=9.0

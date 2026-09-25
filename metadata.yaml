@@ -1,0 +1,5 @@
+name: "turnrig"
+author: "yuanfang1120"
+version: "v1.6.6"
+desc: "监听指定会话的消息并转发到 QQ 或其他平台，支持群内指定用户精准监听"
+repo: "https://github.com/yuanfang1120/astrbot_plugin_turnrig"
