@@ -1413,9 +1413,7 @@ class MessageSender:
 
             # 把所有内容拼进同一条消息链，最后只发一次
             parts = [
-                Plain(
-                    text=f"📨 收到来自{source_name}的 {len(valid_messages)} 条消息："
-                )
+                Plain(text=f"📨 收到来自{source_name}的 {len(valid_messages)} 条消息：")
             ]
 
             sent_ids = set()
