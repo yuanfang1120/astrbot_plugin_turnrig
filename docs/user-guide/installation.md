@@ -82,7 +82,7 @@ AstrBot/data/plugins_data/astrbot_plugin_turnrig/config.json
       "name": "我的转发任务",
       "monitor_groups": [],
       "monitor_private_users": [],
-      "monitored_users_in_groups": { "996221889": ["1957780271"] },
+      "monitored_users_in_groups": { "123456789": ["987654321"] },
       "target_sessions": ["qq:FriendMessage:你的QQ号"],
       "max_messages": 1,
       "enabled": true

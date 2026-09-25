@@ -64,7 +64,7 @@ class _FakeMessageType:
 class _FakeEvent:
     """只提供 _should_monitor_group_user 用到的四个访问点"""
 
-    def __init__(self, group_id="996221889", sender_id="1957780271", prefix="qq"):
+    def __init__(self, group_id="123456789", sender_id="987654321", prefix="qq"):
         """
         构造一个模拟的群消息事件
 
@@ -121,18 +121,18 @@ def main():
     event = _FakeEvent()
 
     should_match = {
-        "纯群号（修复后命令写入的格式）": {"996221889": ["1957780271"]},
+        "纯群号（修复后命令写入的格式）": {"123456789": ["987654321"]},
         "写死 aiocqhttp 前缀（历史错误数据）": {
-            "aiocqhttp:GroupMessage:996221889": ["1957780271"]
+            "aiocqhttp:GroupMessage:123456789": ["987654321"]
         },
-        "真实 UMO 前缀 qq": {"qq:GroupMessage:996221889": ["1957780271"]},
+        "真实 UMO 前缀 qq": {"qq:GroupMessage:123456789": ["987654321"]},
     }
     should_not_match = {
-        "别的群": {"996221890": ["1957780271"]},
-        "别的用户": {"996221889": ["1957780272"]},
+        "别的群": {"123456790": ["987654321"]},
+        "别的用户": {"123456789": ["987654322"]},
         "没有任何配置": {},
         "群号只是别的群号的后缀片段": {
-            "aiocqhttp:GroupMessage:1996221889": ["1957780271"]
+            "aiocqhttp:GroupMessage:1123456789": ["987654321"]
         },
     }
 

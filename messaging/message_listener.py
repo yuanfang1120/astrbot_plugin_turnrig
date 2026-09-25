@@ -917,8 +917,8 @@ class MessageListener:
             if monitored_users:
                 logger.debug(f"在完整会话ID {session_id} 中找到用户监听配置喵 📋")
 
-        # 兜底：历史配置的 key 可能带着写死的平台前缀（如 aiocqhttp:GroupMessage:996221889），
-        # 而实际 UMO 用的是平台实例名（qq:GroupMessage:996221889）。
+        # 兜底：历史配置的 key 可能带着写死的平台前缀（如 aiocqhttp:GroupMessage:123456789），
+        # 而实际 UMO 用的是平台实例名（qq:GroupMessage:123456789）。
         # 只比对 ":群号" 后缀，与平台前缀无关；冒号锚点可避免部分数字误匹配
         if not monitored_users:
             suffix = f":{group_id_str}"
